@@ -1,10 +1,10 @@
 # MD Simulation Analysis Scripts
 
-This repository offers a collection of scripts designed to facilitate the analysis of Molecular Dynamics (MD) simulations using [Visual Molecular Dynamics (VMD)](https://www.ks.uiuc.edu/Research/vmd/) and [R](https://www.r-project.org/). These tools assist in calculating various properties such as Root Mean Square Deviation (RMSD), Root Mean Square Fluctuation (RMSF), salt bridges, and more.
+This repository offers a collection of scripts designed to facilitate the analysis of Molecular Dynamics (MD) simulations using [Visual Molecular Dynamics (VMD)](https://www.ks.uiuc.edu/Research/vmd/) and [R](https://www.r-project.org/). These tools assist in calculating various properties such as Root Mean Square Deviation (RMSD), Root Mean Square Fluctuation (RMSF), salt bridges, hydrogen bonds, and solvent accessible surface area (SASA).
 
 ## Repository Contents
 
-- **`vmd_analysis.tcl`**: A Tcl script for VMD to compute multiple characteristics of MD simulations, including RMSD, RMSF, and salt bridges.
+- **`vmd_analysis.tcl`**: A Tcl script for VMD to compute multiple characteristics of MD simulations, including RMSD, RMSF, salt bridges, etc.
 - **`center_of_mass.tcl`**: Calculates the center of mass for specified groups of atoms.
 - **`gyr_radius.tcl`**: Computes the radius of gyration for selected atom groups.
 - **`hpc_submission_script`**: A sample job submission script tailored for High Performance Computing (HPC) environments using Sun Grid Engine.
@@ -19,12 +19,12 @@ This repository offers a collection of scripts designed to facilitate the analys
 
 ### Local Analysis
 
-1. **Prepare Your Files**: Place your Protein Structure File (PSF) and DCD trajectory files in a designated directory.
-2. **Edit the Script**: Open `vmd_analysis.tcl` and modify the second and fourth lines to specify the names of your PSF and DCD files.
+1. **Prepare Your Files**: Place your Protein Structure File (PSF) and DCD trajectory files in a designated directory, along with the `center_of_mass.tcl`, `gyr_radius.tcl`, and `vmd_analysis.tcl` files.
+2. **Edit the Script**: Open `vmd_analysis.tcl` and modify the fifth and sixth lines to specify the names of your PSF and DCD files.
 3. **Run VMD**:
    - Launch VMD.
    - Open the Tk Console within VMD.
-   - Navigate to your working directory using the command:
+   - Navigate to the directory with all the required files using the command:
      ```tcl
      cd /path/to/your/directory
      ```
@@ -36,8 +36,8 @@ This repository offers a collection of scripts designed to facilitate the analys
 
 ### HPC or Supercomputer Analysis
 
-1. **Transfer Files**: Upload your PSF, DCD, `vmd_analysis.tcl`, and `hpc_submission_script` to a directory on the HPC system.
-2. **Edit the Analysis Script**: Modify the second and fourth lines of `vmd_analysis.tcl` to match your PSF and DCD filenames.
+1. **Transfer Files**: Upload your PSF, DCD, `vmd_analysis.tcl`, `center_of_mass.tcl`, `gyr_radius.tcl`, and `hpc_submission_script` to a directory on the HPC system.
+2. **Edit the Analysis Script**: Modify the fifth and sixth lines of `vmd_analysis.tcl` to match your PSF and DCD filenames.
 3. **Edit the Submission Script**: Adjust `hpc_submission_script` to set the job name, number of cores, and other parameters as required.
 4. **Load VMD Module**: Follow your HPC's documentation to load the VMD module. This typically involves a command such as:
    ```bash
